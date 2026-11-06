@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="it" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#e11d48">
+  <title>Tracking | Hez Maak</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+
+  <style>
+    :root {
+      --primary: #e11d48;
+      --primary-dark: #be123c;
+      --dark: #0f172a;
+      --text: #334155;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f1f5f9;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+    button, input { font: inherit; }
+    a { color: inherit; text-decoration: none; }
+
+    .bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px max(16px, calc((100% - 760px) / 2));
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+    }
+    .brand { display: flex; align-items: center; gap: 10px; }
+    .brand img { width: 40px; height: 40px; }
+    .brand b { display: block; color: var(--dark); font-size: 17px; line-height: 1.1; }
+    .brand small { color: var(--muted); font-size: 13px; }
+    .lang {
+      padding: 8px 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    main { max-width: 760px; margin: 0 auto; padding: 28px 16px 60px; }
+    h1 { font-size: clamp(26px, 5vw, 34px); color: var(--dark); line-height: 1.15; margin-bottom: 8px; }
+    .lead { color: var(--muted); margin-bottom: 22px; }
+
+    form.search { display: flex; gap: 8px; margin-bottom: 22px; }
+    .search input {
+      flex: 1;
+      min-width: 0;
+      padding: 15px 16px;
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      background: #fff;
+      color: var(--dark);
+      font: 700 18px ui-monospace, Menlo, Consolas, monospace;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      direction: ltr;
+    }
+    .search input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(225, 29, 72, .12); }
+    .search button {
+      padding: 0 22px;
+      border: 0;
+      border-radius: 14px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .search button:hover { background: var(--primary-dark); }
+    .search button:disabled { opacity: .6; cursor: wait; }
+
+    .card {
+      margin-bottom: 16px;
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: #fff;
+    }
+    .msg { text-align: center; color: var(--muted); padding: 30px 16px; }
+    .msg.err { color: #b91c1c; }
+
+    .head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 4px; }
+    .code { font: 800 20px ui-monospace, Menlo, Consolas, monospace; color: var(--dark); direction: ltr; unicode-bidi: isolate; }
+    .pill {
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 14px;
+      background: #e2e8f0;
+      color: #334155;
+    }
+    .st-picked_up { background: #fef3c7; color: #92400e; }
+    .st-in_transit { background: #dbeafe; color: #1d4ed8; }
+    .st-customs { background: #ede9fe; color: #6d28d9; }
+    .st-delivered { background: #dcfce7; color: #166534; }
+    .st-cancelled { background: #fee2e2; color: #991b1b; }
+
+    .route { font-size: 20px; font-weight: 700; color: var(--dark); margin: 6px 0 2px; }
+    .sub { color: var(--muted); font-size: 14.5px; }
+
+    .steps { display: flex; margin: 24px 0 8px; }
+    .step { flex: 1; position: relative; text-align: center; font-size: 12.5px; color: var(--muted); }
+    .step i {
+      display: block;
+      width: 22px;
+      height: 22px;
+      margin: 0 auto 6px;
+      border-radius: 50%;
+      background: #e2e8f0;
+      border: 3px solid #e2e8f0;
+      position: relative;
+      z-index: 1;
+    }
+    .step::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      inset-inline-start: -50%;
+      width: 100%;
+      height: 4px;
+      background: #e2e8f0;
+    }
+    .step:first-child::before { display: none; }
+    .step.done i, .step.done::before { background: #16a34a; border-color: #16a34a; }
+    .step.now i { background: #fff; border-color: #16a34a; box-shadow: 0 0 0 4px rgba(22, 163, 74, .18); }
+    .step.now::before { background: #16a34a; }
+    .step.done, .step.now { color: var(--dark); font-weight: 700; }
+    .steps.cancelled .step i, .steps.cancelled .step::before { background: #e2e8f0; border-color: #e2e8f0; }
+
+    h2 { font-size: 16px; color: var(--dark); margin-bottom: 12px; }
+    .events { list-style: none; display: grid; gap: 14px; }
+    .events li { padding-inline-start: 18px; position: relative; }
+    .events li::before {
+      content: "";
+      position: absolute;
+      inset-inline-start: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+    .events .when { color: var(--muted); font-size: 13.5px; }
+    .events .note { margin-top: 2px; }
+
+    .carrier { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+    .carrier b { color: var(--dark); font-size: 16px; }
+    .wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 18px;
+      border-radius: 12px;
+      background: #16a34a;
+      color: #fff;
+      font-weight: 800;
+    }
+    .wa:hover { background: #15803d; }
+
+    .fine { color: var(--muted); font-size: 13px; text-align: center; margin-top: 20px; }
+    .fine a { color: var(--primary); font-weight: 700; }
+
+    @media (max-width: 480px) {
+      .step { font-size: 11px; }
+      .card { padding: 18px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="bar">
+    <a class="brand" href="index.html">
+      <img src="logo-icon.svg" alt="">
+      <span><b>Hez Maak</b><small>هزّ معاك</small></span>
+    </a>
+    <button class="lang" id="langBtn" type="button">🇮🇹 IT</button>
+  </div>
+
+  <main>
+    <h1 id="tTitle">Segui il tuo pacco</h1>
+    <p class="lead" id="tLead">Inserisci il codice che ti ha dato il trasportatore.</p>
+
+    <form class="search" id="form" autocomplete="off">
+      <input id="codeInput" name="c" maxlength="14" placeholder="HM-XXXX-XXXX" autocapitalize="characters" spellcheck="false" aria-label="Tracking">
+      <button type="submit" id="goBtn">Cerca</button>
+    </form>
+
+    <div id="result"></div>
+
+    <p class="fine" id="tFine"></p>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script>
+    (function () {
+      "use strict";
+
+      var T = {
+        it: {
+          title: "Segui il tuo pacco",
+          lead: "Inserisci il codice che ti ha dato il trasportatore.",
+          go: "Cerca",
+          loading: "Ricerca in corso…",
+          notFound: "Nessuna spedizione trovata con questo codice. Controlla di averlo scritto bene.",
+          error: "Non riesco a caricare i dati in questo momento. Riprova tra poco.",
+          packages: "{n} colli",
+          history: "Cronologia",
+          carrier: "Trasportatore",
+          contact: "Scrivi su WhatsApp",
+          cancelledNote: "Questa spedizione è stata annullata dal trasportatore.",
+          updated: "Ultimo aggiornamento",
+          fine: "Le informazioni sono inserite dal trasportatore. Hez Maak mette a disposizione lo strumento ma non controlla le spedizioni. <a href=\"index.html\">Vai a Hez Maak</a>",
+          st_registered: "Registrata", st_picked_up: "Ritirata", st_in_transit: "In viaggio",
+          st_customs: "In dogana", st_delivered: "Consegnata", st_cancelled: "Annullata",
+          wa: "Ciao, scrivo per la spedizione {code}."
+        },
+        en: {
+          title: "Track your parcel",
+          lead: "Enter the code the carrier gave you.",
+          go: "Search",
+          loading: "Searching…",
+          notFound: "No shipment found with this code. Please check you typed it correctly.",
+          error: "I can't load the data right now. Please try again shortly.",
+          packages: "{n} packages",
+          history: "History",
+          carrier: "Carrier",
+          contact: "Write on WhatsApp",
+          cancelledNote: "This shipment was cancelled by the carrier.",
+          updated: "Last update",
+          fine: "The information is entered by the carrier. Hez Maak provides the tool but does not check shipments. <a href=\"index.html\">Go to Hez Maak</a>",
+          st_registered: "Registered", st_picked_up: "Picked up", st_in_transit: "In transit",
+          st_customs: "At customs", st_delivered: "Delivered", st_cancelled: "Cancelled",
+          wa: "Hello, I'm writing about shipment {code}."
+        },
+        fr: {
+          title: "Suivez votre colis",
+          lead: "Saisissez le code donné par le transporteur.",
+          go: "Rechercher",
+          loading: "Recherche en cours…",
+          notFound: "Aucun envoi trouvé avec ce code. Vérifiez que vous l'avez bien saisi.",
+          error: "Impossible de charger les données pour le moment. Réessayez dans un instant.",
+          packages: "{n} colis",
+          history: "Historique",
+          carrier: "Transporteur",
+          contact: "Écrire sur WhatsApp",
+          cancelledNote: "Cet envoi a été annulé par le transporteur.",
+          updated: "Dernière mise à jour",
+          fine: "Les informations sont saisies par le transporteur. Hez Maak fournit l'outil mais ne contrôle pas les envois. <a href=\"index.html\">Aller sur Hez Maak</a>",
+          st_registered: "Enregistré", st_picked_up: "Récupéré", st_in_transit: "En route",
+          st_customs: "En douane", st_delivered: "Livré", st_cancelled: "Annulé",
+          wa: "Bonjour, je vous écris au sujet de l'envoi {code}."
+        },
+        tn: {
+          title: "تبع الطرد متاعك",
+          lead: "اكتب الكود إلي عطاهولك الناقل.",
+          go: "لوّج",
+          loading: "نلوّج…",
+          notFound: "ما لقيناش شحنة بالكود هذا. ثبّت روحك كتبتو صحيح.",
+          error: "ما نجّمتش نحمّل المعطيات توّا. عاود جرّب بعد شويّة.",
+          packages: "{n} طرود",
+          history: "التاريخ",
+          carrier: "الناقل",
+          contact: "اكتب في واتساب",
+          cancelledNote: "الشحنة هاذي ألغاها الناقل.",
+          updated: "آخر تحديث",
+          fine: "المعلومات يكتبها الناقل. هز معاك يعطي الأداة برك وما يراقبش الشحنات. <a href=\"index.html\">روح لهز معاك</a>",
+          st_registered: "مسجّلة", st_picked_up: "تسحبت", st_in_transit: "في الطريق",
+          st_customs: "في الديوانة", st_delivered: "وصلت", st_cancelled: "ملغية",
+          wa: "السلام، نكتبلك على الشحنة {code}."
+        }
+      };
+
+      var LANGS = [
+        { code: "it", label: "🇮🇹 IT", dir: "ltr" },
+        { code: "en", label: "🇬🇧 EN", dir: "ltr" },
+        { code: "fr", label: "🇫🇷 FR", dir: "ltr" },
+        { code: "tn", label: "🇹🇳 TN", dir: "rtl" }
+      ];
+      var LOCALES = { it: "it-IT", en: "en-GB", fr: "fr-FR", tn: "ar-TN-u-nu-latn" };
+      var STEPS = ["registered", "picked_up", "in_transit", "customs", "delivered"];
+
+      var lang = "it";
+      try { lang = localStorage.getItem("hezmaak_language") || "it"; } catch (e) { /* niente */ }
+      if (!T[lang]) lang = "it";
+
+      var lastData = null;
+      var client = null;
+
+      function tr(key, vars) {
+        var s = (T[lang] && T[lang][key]) || T.it[key] || key;
+        if (vars) Object.keys(vars).forEach(function (k) { s = s.split("{" + k + "}").join(vars[k]); });
+        return s;
+      }
+
+      function esc(v) {
+        return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+        });
+      }
+
+      function fmt(d) {
+        return new Date(d).toLocaleString(LOCALES[lang], {
+          day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit"
+        });
+      }
+
+      function waDigits(p) {
+        var d = String(p || "").replace(/[^\d+]/g, "");
+        if (d.charAt(0) === "+") d = d.slice(1);
+        else if (d.slice(0, 2) === "00") d = d.slice(2);
+        d = d.replace(/\D/g, "");
+        return d.length >= 8 ? d : "";
+      }
+
+      function cityLabel(raw) {
+        return raw || "";
+      }
+
+      function applyLang() {
+        var def = LANGS.filter(function (l) { return l.code === lang; })[0] || LANGS[0];
+        document.documentElement.lang = lang === "tn" ? "ar" : lang;
+        document.documentElement.dir = def.dir;
+        document.getElementById("langBtn").textContent = def.label;
+        document.getElementById("tTitle").textContent = tr("title");
+        document.getElementById("tLead").textContent = tr("lead");
+        document.getElementById("goBtn").textContent = tr("go");
+        document.getElementById("tFine").innerHTML = tr("fine");
+        if (lastData) renderResult(lastData);
+        try { localStorage.setItem("hezmaak_language", lang); } catch (e) { /* niente */ }
+      }
+
+      function show(html) {
+        document.getElementById("result").innerHTML = html;
+      }
+
+      function renderResult(d) {
+        lastData = d;
+        var cancelled = d.status === "cancelled";
+        var idx = STEPS.indexOf(d.status);
+        var steps = STEPS.map(function (s, i) {
+          var cls = "step";
+          if (!cancelled) {
+            if (i < idx) cls += " done";
+            else if (i === idx) cls += " now";
+            if (d.status === "delivered" && i === idx) cls = "step done";
+          }
+          return '<div class="' + cls + '"><i></i>' + esc(tr("st_" + s)) + "</div>";
+        }).join("");
+
+        var events = (d.events || []).slice().reverse().map(function (ev) {
+          return "<li><b>" + esc(tr("st_" + ev.status)) + '</b> <span class="when">· ' + esc(fmt(ev.at)) + "</span>" +
+            (ev.note ? '<div class="note">' + esc(ev.note) + "</div>" : "") + "</li>";
+        }).join("");
+
+        var wa = waDigits(d.carrier_whatsapp);
+        var route = (cityLabel(d.origin) || "?") + " → " + (cityLabel(d.destination) || "?");
+
+        show(
+          '<div class="card">' +
+            '<div class="head"><span class="code">' + esc(d.code) + '</span>' +
+            '<span class="pill st-' + esc(d.status) + '">' + esc(tr("st_" + d.status)) + "</span></div>" +
+            '<div class="route">' + esc(route) + "</div>" +
+            '<div class="sub">' + esc(tr("packages", { n: d.packages || 0 })) + " · " + esc(tr("updated")) + ": " + esc(fmt(d.updated_at)) + "</div>" +
+            (cancelled ? '<p class="sub" style="margin-top:14px;color:#991b1b">' + esc(tr("cancelledNote")) + "</p>" : "") +
+            '<div class="steps' + (cancelled ? " cancelled" : "") + '">' + steps + "</div>" +
+          "</div>" +
+          (events ? '<div class="card"><h2>' + esc(tr("history")) + '</h2><ul class="events">' + events + "</ul></div>" : "") +
+          (d.carrier ? '<div class="card carrier"><div><span class="sub">' + esc(tr("carrier")) + "</span><br><b>" + esc(d.carrier) + "</b></div>" +
+            (wa ? '<a class="wa" target="_blank" rel="noopener" href="https://wa.me/' + wa + "?text=" +
+              encodeURIComponent(tr("wa", { code: d.code })) + '">💬 ' + esc(tr("contact")) + "</a>" : "") +
+          "</div>" : "")
+        );
+      }
+
+      function lookup(raw) {
+        var code = String(raw || "").trim();
+        if (!code) return;
+        lastData = null;
+        show('<div class="card msg">' + esc(tr("loading")) + "</div>");
+        var btn = document.getElementById("goBtn");
+        btn.disabled = true;
+
+        client.rpc("pro_track", { p_code: code }).then(function (res) {
+          btn.disabled = false;
+          if (res.error) {
+            console.error(res.error);
+            show('<div class="card msg err">' + esc(tr("error")) + "</div>");
+            return;
+          }
+          var d = res.data;
+          if (!d || !d.found) {
+            show('<div class="card msg err">' + esc(tr("notFound")) + "</div>");
+            return;
+          }
+          renderResult(d);
+          try {
+            var u = new URL(window.location.href);
+            u.searchParams.set("c", d.code);
+            window.history.replaceState(null, "", u.href);
+          } catch (e) { /* niente */ }
+        }).catch(function (e) {
+          btn.disabled = false;
+          console.error(e);
+          show('<div class="card msg err">' + esc(tr("error")) + "</div>");
+        });
+      }
+
+      document.getElementById("langBtn").addEventListener("click", function () {
+        var i = LANGS.findIndex(function (l) { return l.code === lang; });
+        lang = LANGS[(i + 1) % LANGS.length].code;
+        applyLang();
+      });
+
+      document.getElementById("form").addEventListener("submit", function (e) {
+        e.preventDefault();
+        lookup(document.getElementById("codeInput").value);
+      });
+
+      applyLang();
+
+      try {
+        client = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      } catch (e) {
+        console.error(e);
+        show('<div class="card msg err">' + esc(tr("error")) + "</div>");
+        return;
+      }
+
+      var initial = new URLSearchParams(window.location.search).get("c");
+      if (initial) {
+        document.getElementById("codeInput").value = initial.toUpperCase();
+        lookup(initial);
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="it" dir="ltr">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  >
+
+  <meta
+    name="description"
+    content="Hez Maak - Connetti persone tra Europa e Tunisia per viaggi, acquisti e trasporti."
+  >
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hez Maak | هزّ معاك">
+  <meta property="og:description" content="Connetti persone tra Europa e Tunisia per viaggi, acquisti e trasporti.">
+  <meta name="twitter:card" content="summary">
+
+  <title>Hez Maak | هزّ معاك</title>
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+  <meta name="theme-color" content="#e11d48">
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+  <div class="container nav">
+
+
+    <!-- LOGO -->
+
+    <a
+      href="#"
+      class="logo"
+      onclick="goHome(); return false;"
+    >
+
+      <img src="logo-icon.svg" alt="" class="logo-icon">
+
+      <span class="logo-text">
+
+        <span>Hez Maak</span>
+
+        <small>هزّ معاك</small>
+
+      </span>
+
+    </a>
+
+
+    <!-- MOBILE MENU -->
+
+    <button
+      class="mobile-menu"
+      onclick="toggleMenu()"
+      aria-label="Menu"
+    >
+      ☰
+    </button>
+
+
+    <!-- NAVIGATION -->
+
+    <nav id="mainNav">
+
+
+      <a
+        href="#viaggi"
+        data-i18n="navTrips"
+      >
+        Viaggi
+      </a>
+
+
+      <a
+        href="#richieste"
+        data-i18n="navRequests"
+      >
+        Richieste
+      </a>
+
+
+      <a
+        href="#come"
+        data-i18n="navHow"
+      >
+        Come funziona
+      </a>
+
+
+      <a
+        href="#pro"
+        data-i18n="navPro"
+      >
+        Trasportatori
+      </a>
+
+
+      <!-- LANGUAGE -->
+
+      <button
+        id="languageButton"
+        class="language-button"
+        onclick="cycleLanguage()"
+        type="button"
+      >
+        🇮🇹 IT
+      </button>
+
+
+      <!-- DARK MODE -->
+
+      <button
+        id="darkButton"
+        class="icon-button"
+        onclick="toggleDarkMode()"
+        type="button"
+        aria-label="Dark mode"
+      >
+        🌙
+      </button>
+
+
+      <!-- AUTH -->
+
+      <button
+        id="authButton"
+        class="primary"
+        onclick="openAuth('login')"
+        type="button"
+        data-i18n="loginRegister"
+      >
+        Accedi / Registrati
+      </button>
+
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+  <div class="container hero-grid">
+
+
+    <div class="hero-content">
+
+
+      <div
+        class="badge"
+        data-i18n="badge"
+      >
+        🇪🇺 Europa ↔ 🇹🇳 Tunisia
+      </div>
+
+
+      <h1 data-i18n="heroTitle">
+
+        Porta ciò che serve. <span>Connettiti.</span> Guadagna.
+
+      </h1>
+
+
+      <p data-i18n="heroText">
+        Hez Maak mette in contatto persone che devono
+        ricevere oggetti tra Italia e Tunisia con
+        viaggiatori e trasportatori che hanno spazio
+        disponibile.
+
+      </p>
+
+
+      <div class="hero-buttons">
+
+
+        <button
+          class="primary large"
+          data-action="publish-trip"
+          data-i18n="travelButton"
+        >
+          ✈️ Sto viaggiando
+        </button>
+
+
+        <button
+          class="secondary large"
+          data-action="publish-request"
+          data-i18n="requestButton"
+        >
+          📦 Cerco qualcuno
+        </button>
+
+
+      </div>
+
+
+      <div class="trust">
+
+
+        <div>
+
+          <strong>✓</strong>
+
+          <span data-i18n="verifiedUsers">
+            Utenti verificati
+          </span>
+
+        </div>
+
+
+        <div>
+
+          <strong>⭐</strong>
+
+          <span data-i18n="reviews">
+            Recensioni
+          </span>
+
+        </div>
+
+
+        <div>
+
+          <strong>🔐</strong>
+
+          <span data-i18n="securePayments">
+            Pagamenti sicuri
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- HERO CARD -->
+
+    <div class="hero-card">
+
+
+      <div class="route-card">
+
+
+        <div
+          class="route-title"
+          data-i18n="routeTitle"
+        >
+          ✈️ Un viaggio, un'opportunità
+        </div>
+
+
+        <div class="route">
+
+
+          <div>
+
+            <span>🇪🇺</span>
+
+            <strong data-i18n="europeLabel">
+              Europa
+            </strong>
+
+          </div>
+
+
+          <div class="route-line">
+            ━━━━━ ✈️ ━━━━━
+          </div>
+
+
+          <div>
+
+            <span>🇹🇳</span>
+
+            <strong data-i18n="tunisia">
+              Tunisia
+            </strong>
+
+          </div>
+
+
+        </div>
+
+
+        <p data-i18n="routeDescription">
+
+          Hai spazio in valigia?
+          Puoi aiutare qualcuno e
+          guadagnare.
+
+        </p>
+
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     HOW IT WORKS
+===================================================== -->
+
+<section
+  id="come"
+  class="how"
+>
+
+  <div class="container">
+
+
+    <div class="section-title">
+
+
+      <span
+        data-i18n="howLabel"
+      >
+        COME FUNZIONA
+      </span>
+
+
+      <h2
+        data-i18n="howTitle"
+      >
+        Semplice, sicuro, umano.
+      </h2>
+
+
+    </div>
+
+
+
+    <div class="hm-carousel hm-carousel--steps">
+
+
+      <button
+        type="button"
+        class="hm-arrow hm-prev"
+        aria-label="Indietro"
+      >‹</button>
+
+
+    <div class="steps hm-track">
+
+
+      <!-- STEP 1 -->
+
+      <div class="step">
+
+
+        <div class="step-number">
+          1
+        </div>
+
+
+        <h3 data-i18n="step1Title">
+          Pubblica
+        </h3>
+
+
+        <p data-i18n="step1Text">
+
+          Pubblica il tuo viaggio
+          oppure indica cosa vuoi
+          far trasportare.
+
+        </p>
+
+
+      </div>
+
+
+
+      <!-- STEP 2 -->
+
+      <div class="step">
+
+
+        <div class="step-number">
+          2
+        </div>
+
+
+        <h3 data-i18n="step2Title">
+          Connettiti
+        </h3>
+
+
+        <p data-i18n="step2Text">
+
+          Trova una persona che
+          percorre la tua stessa
+          tratta.
+
+        </p>
+
+
+      </div>
+
+
+
+      <!-- STEP 3 -->
+
+      <div class="step">
+
+
+        <div class="step-number">
+          3
+        </div>
+
+
+        <h3 data-i18n="step3Title">
+          Organizza
+        </h3>
+
+
+        <p data-i18n="step3Text">
+
+          Contatta l'altra persona
+          e concordate i dettagli.
+
+        </p>
+
+
+      </div>
+
+
+
+      <!-- STEP 4 -->
+
+      <div class="step">
+
+
+        <div class="step-number">
+          4
+        </div>
+
+
+        <h3 data-i18n="step4Title">
+          Recensisci
+        </h3>
+
+
+        <p data-i18n="step4Text">
+
+          Dopo il servizio lascia
+          una recensione.
+
+        </p>
+
+
+      </div>
+
+
+    </div>
+
+
+      <button
+        type="button"
+        class="hm-arrow hm-next"
+        aria-label="Avanti"
+      >›</button>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TRIPS
+===================================================== -->
+
+<section
+  id="viaggi"
+  class="marketplace"
+>
+
+  <div class="container">
+
+
+    <div class="section-header">
+
+
+      <div>
+        <span
+          class="section-label"
+          data-i18n="tripsLabel"
+        >
+          VIAGGI DISPONIBILI
+        </span>
+
+        <h2
+          data-i18n="tripsTitle"
+        >
+          Trova un viaggiatore
+        </h2>
+
+
+      </div>
+
+
+      <div class="section-actions">
+
+        <button
+          type="button"
+          class="follow-btn"
+          onclick="openFollowModal()"
+          data-i18n="followBtn"
+        >
+          🔔 Segui una destinazione
+        </button>
+
+        <button
+          class="secondary"
+          data-action="publish-trip"
+          data-i18n="publishTrip"
+        >
+          + Pubblica viaggio
+        </button>
+
+      </div>
+
+
+    </div>
+
+
+
+    <p class="sample-notice" id="tripsNotice" data-i18n="sampleNotice" hidden></p>
+
+    <div class="hm-carousel">
+
+
+      <button
+        type="button"
+        class="hm-arrow hm-prev"
+        aria-label="Indietro"
+      >‹</button>
+
+
+      <div
+        id="tripsContainer"
+        class="cards hm-track"
+      >
+
+        <div
+          class="loading"
+          data-i18n="loading"
+        >
+          Caricamento...
+        </div>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="hm-arrow hm-next"
+        aria-label="Avanti"
+      >›</button>
+
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     REQUESTS
+===================================================== -->
+
+<section
+  id="richieste"
+  class="requests-section"
+>
+
+  <div class="container">
+
+
+    <div class="section-header">
+
+
+      <div>
+
+
+        <span
+          class="section-label"
+          data-i18n="requestsLabel"
+        >
+          RICHIESTE
+        </span>
+
+
+        <h2
+          data-i18n="requestsTitle"
+        >
+          Cosa cercano le persone?
+        </h2>
+
+
+      </div>
+
+
+      <div class="section-actions">
+
+        <button
+          type="button"
+          class="follow-btn"
+          onclick="openFollowModal()"
+          data-i18n="followBtn"
+        >
+          🔔 Segui una destinazione
+        </button>
+
+        <button
+          class="secondary"
+          data-action="publish-request"
+          data-i18n="publishRequest"
+        >
+          + Pubblica richiesta
+        </button>
+
+      </div>
+
+
+    </div>
+
+
+
+    <p class="sample-notice" id="requestsNotice" data-i18n="sampleNotice" hidden></p>
+
+    <div class="hm-carousel">
+
+
+      <button
+        type="button"
+        class="hm-arrow hm-prev"
+        aria-label="Indietro"
+      >‹</button>
+
+
+      <div
+        id="requestsContainer"
+        class="cards hm-track"
+      >
+
+        <div
+          class="loading"
+          data-i18n="loading"
+        >
+          Caricamento...
+        </div>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="hm-arrow hm-next"
+        aria-label="Avanti"
+      >›</button>
+
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TRASPORTATORI E AZIENDE (AREA PRO)
+===================================================== -->
+
+<section id="pro" class="pro-home">
+  <div class="container pro-home-grid">
+
+    <div>
+      <span class="section-label" data-i18n="proHomeLabel">PER TRASPORTATORI E AZIENDE</span>
+      <h2 data-i18n="proHomeTitle">Organizza il tuo lavoro tra Europa e Tunisia</h2>
+      <p class="pro-home-lead" data-i18n="proHomeText">Registra le spedizioni, gestisci clienti e partenze e manda ai clienti un link per seguire il pacco. È gratis e lo puoi usare anche se non cerchi clienti sul sito.</p>
+
+      <div class="pro-home-feats">
+        <div class="pro-home-feat">
+          <b data-i18n="proHomeF1T">Registro spedizioni</b>
+          <span data-i18n="proHomeF1D">Ogni pacco con codice, stato, prezzo e saldo.</span>
+        </div>
+        <div class="pro-home-feat">
+          <b data-i18n="proHomeF2T">Link di tracking</b>
+          <span data-i18n="proHomeF2D">I clienti vedono dov'è il pacco, senza scriverti su WhatsApp.</span>
+        </div>
+        <div class="pro-home-feat">
+          <b data-i18n="proHomeF3T">Calendario partenze</b>
+          <span data-i18n="proHomeF3D">La capacità del mezzo contro il carico già prenotato.</span>
+        </div>
+        <div class="pro-home-feat">
+          <b data-i18n="proHomeF4T">Messaggi e ricevute</b>
+          <span data-i18n="proHomeF4D">WhatsApp già compilato e, con Pro, ricevute PDF con il tuo logo.</span>
+        </div>
+      </div>
+
+      <div class="pro-home-cta">
+        <button type="button" class="pro-home-btn" onclick="openPro()" data-i18n="proHomeCta">Apri l'Area Pro</button>
+        <small data-i18n="proHomeFree">Gratis fino a 20 spedizioni al mese</small>
+      </div>
+    </div>
+
+    <div>
+      <div class="pro-mock" aria-hidden="true">
+        <div class="pro-mock-head">
+          <b data-i18n="proHomeMockTitle">Le tue spedizioni</b>
+          <span class="pro-mock-tag" data-i18n="proHomeMockTag">ESEMPIO</span>
+        </div>
+        <div class="pro-mock-row">
+          <div><span class="pro-code">HM-7K3P-Q9XD</span><span>Milano → Tunis</span></div>
+          <span class="pro-pill st-in_transit" data-i18n="proHomeSt1">In viaggio</span>
+        </div>
+        <div class="pro-mock-row">
+          <div><span class="pro-code">HM-4TN2-WB8M</span><span>Torino → Sfax</span></div>
+          <span class="pro-pill st-picked_up" data-i18n="proHomeSt2">Ritirata</span>
+        </div>
+        <div class="pro-mock-row">
+          <div><span class="pro-code">HM-R6HC-2ZEA</span><span>Paris → Sousse</span></div>
+          <span class="pro-pill st-delivered" data-i18n="proHomeSt3">Consegnata</span>
+        </div>
+      </div>
+
+      <div class="pro-track-box">
+        <b data-i18n="proHomeTrackTitle">Hai un codice di tracking?</b>
+        <form class="pro-track-form" action="tracking.html" method="get">
+          <input type="text" name="c" placeholder="HM-XXXX-XXXX" maxlength="14" autocomplete="off" autocapitalize="characters" required aria-label="Tracking">
+          <button type="submit" data-i18n="proHomeTrackBtn">Segui il pacco</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =====================================================
+     RECENSIONI + CAROSELLO
+===================================================== -->
+
+<section class="reviews-section">
+
+  <div class="container">
+
+    <div class="section-header">
+
+      <div>
+
+        <span class="section-label" data-i18n="reviewsLabel">
+          LA COMMUNITY DICE
+        </span>
+
+        <h2 data-i18n="reviewsHomeTitle">
+          Storie di chi ha già usato Hez Maak
+        </h2>
+
+      </div>
+
+    </div>
+
+
+    <!-- Carosello copertina (sostituisce la vecchia foto) -->
+    <div class="cv-wrap">
+
+      <div class="sp-carousel cv-carousel" id="cvCarousel" aria-roledescription="carousel">
+
+        <a
+          class="cv-fb-pill"
+          href="https://facebook.com/hezmaak"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M15 3H18V7H16C15.45 7 15 7.45 15 8V10H18L17.5 14H15V21H11V14H9V10H11V7.5C11 5 12.79 3 15.3 3Z"/></svg>
+          <span data-i18n="cvFbShort">Segui su Facebook</span>
+        </a>
+
+        <div class="sp-track">
+
+          <!-- SLIDE 1 -->
+          <article class="sp-slide sp-slide--red">
+            <div class="sp-text">
+              <span class="sp-label" data-i18n="cvLabel1">LA PIATTAFORMA</span>
+              <h2 data-i18n="cvTitle1">Avvicina la Tunisia<br>e tutta l'Europa</h2>
+              <p data-i18n="cvText1">Invia o ricevi pacchi grazie ai viaggiatori. Semplice, sicuro e umano.</p>
+              <button type="button" class="sp-btn sp-btn--white" onclick="openAuth('register')" data-i18n="cvBtn1">Unisciti alla community</button>
+            </div>
+            <div class="cv-photo cv-photo--tn" style="background-image:url('Immagini/copertina-tunisia.jpg')" role="img" aria-label="Tunisia"></div>
+          </article>
+
+          <!-- SLIDE 2 -->
+          <article class="sp-slide sp-slide--rose">
+            <div class="sp-text">
+              <span class="sp-label sp-label--red" data-i18n="cvLabel2">EUROPA ↔ TUNISIA</span>
+              <h2 data-i18n="cvTitle2">Viaggi? Aiuta e guadagna</h2>
+              <p data-i18n="cvText2">Hai spazio in valigia? Pubblica il tuo viaggio e aiuta qualcuno tra Europa e Tunisia.</p>
+              <button type="button" class="sp-btn sp-btn--red" data-action="publish-trip" data-i18n="ctaButton">Pubblica il tuo viaggio</button>
+            </div>
+            <div class="cv-photo cv-photo--eu" style="background-image:url('Immagini/copertina-europa.jpg')" role="img" aria-label="Europa"></div>
+          </article>
+
+          <!-- SLIDE 3 -->
+          <article class="sp-slide sp-slide--dark cv-slide-fb">
+            <div class="sp-text">
+              <span class="sp-label sp-label--rose" data-i18n="cvLabel3">COMMUNITY</span>
+              <h2 data-i18n="cvTitle3">Più di un servizio,<br>una community</h2>
+              <p data-i18n="cvText3">Seguici su Facebook per novità, consigli di viaggio e storie dalla community.</p>
+              <a class="sp-btn sp-btn--fb" href="https://facebook.com/hezmaak" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M15 3H18V7H16C15.45 7 15 7.45 15 8V10H18L17.5 14H15V21H11V14H9V10H11V7.5C11 5 12.79 3 15.3 3Z"/></svg>
+                <span data-i18n="cvFbBtn">Segui la pagina Facebook</span>
+              </a>
+            </div>
+            <div class="sp-badge"><img src="logo-icon.svg" alt="Hez Maak"></div>
+          </article>
+
+        </div>
+
+        <button type="button" class="sp-arrow sp-prev" aria-label="Precedente"><span>‹</span></button>
+        <button type="button" class="sp-arrow sp-next" aria-label="Successivo"><span>›</span></button>
+
+        <div class="sp-dots"></div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Recensioni reali (carosello) -->
+    <div class="hm-carousel hm-carousel--reviews">
+
+      <button
+        type="button"
+        class="hm-arrow hm-prev"
+        aria-label="Indietro"
+      >‹</button>
+
+      <div
+        id="homeReviewsContainer"
+        class="hm-track"
+      >
+
+        <div class="loading" data-i18n="loading">
+          Caricamento...
+        </div>
+
+      </div>
+
+      <button
+        type="button"
+        class="hm-arrow hm-next"
+        aria-label="Avanti"
+      >›</button>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FAQ
+===================================================== -->
+
+<section id="faq" class="faq-section">
+
+  <div class="container">
+
+    <div class="section-header">
+
+      <div>
+
+        <span class="section-label" data-i18n="faqLabel">
+          DOMANDE FREQUENTI
+        </span>
+
+        <h2 data-i18n="faqTitle">
+          Hai dubbi? Ecco le risposte
+        </h2>
+
+      </div>
+
+    </div>
+
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary data-i18n="faq1Q">Come funziona il pagamento?</summary>
+        <p data-i18n="faq1A">I pagamenti si concordano direttamente tra le due persone, fuori dalla piattaforma. Hez Maak mette in contatto gli utenti ma non interviene negli accordi economici.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary data-i18n="faq2Q">Cosa posso far trasportare?</summary>
+        <p data-i18n="faq2A">Sono vietati merci illegali, pericolose, contraffatte o soggette a restrizioni doganali. Ogni utente deve rispettare le leggi doganali dei paesi coinvolti.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary data-i18n="faq3Q">Hez Maak controlla i pacchi?</summary>
+        <p data-i18n="faq3A">No. La piattaforma non controlla il contenuto delle spedizioni: ti consigliamo di verificare sempre cosa viene trasportato e di usare buon senso negli accordi.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary data-i18n="faq4Q">Cosa significa profilo verificato?</summary>
+        <p data-i18n="faq4A">Il badge indica che l'utente ha caricato un documento d'identità controllato dal nostro team. Aumenta la fiducia, ma non è una garanzia assoluta.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary data-i18n="faq5Q">Come funziona «Segui una destinazione»?</summary>
+        <p data-i18n="faq5A">Scegli uno o più paesi: ogni volta che viene pubblicato un viaggio o una richiesta su quella tratta ricevi una notifica, così non perdi nessuna occasione.</p>
+      </details>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SPONSOR CAROSELLO
+===================================================== -->
+
+<section id="sponsor" class="sponsor-section">
+
+  <div class="container">
+
+    <div class="sp-carousel" id="spCarousel" aria-roledescription="carousel">
+
+      <div class="sp-track" id="spTrack">
+
+        <!-- SLIDE 1 -->
+        <article class="sp-slide sp-slide--red">
+          <div class="sp-text">
+            <span class="sp-label" data-i18n="spLabel1">SPONSOR · PUBBLICITÀ</span>
+            <h2 data-i18n="spTitle1">Fai conoscere<br>la tua attività</h2>
+            <p data-i18n="spText1">Raggiungi una community viva tra Europa e Tunisia.</p>
+            <a class="sp-btn sp-btn--white" href="mailto:sponsor@hezmaak.com" data-i18n="spBtn1">Diventa sponsor</a>
+          </div>
+          <div class="sp-badge"><img src="logo-icon.svg" alt="Hez Maak"></div>
+        </article>
+
+        <!-- SLIDE 2 -->
+        <article class="sp-slide sp-slide--dark">
+          <div class="sp-text">
+            <span class="sp-label sp-label--rose" data-i18n="spLabel2">PARTNERSHIP</span>
+            <h2 data-i18n="spTitle2">Diventa nostro sponsor</h2>
+            <p data-i18n="spText2">Il tuo brand davanti a chi viaggia e spedisce ogni giorno.</p>
+          </div>
+          <div class="sp-benefits">
+            <div class="sp-benefit">
+              <span class="sp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M2 12Q12 3 22 12Q12 21 2 12Z"/><circle cx="12" cy="12" r="3" fill="#fff" stroke="none"/></svg></span>
+              <div><strong data-i18n="spB1T">Più visibilità</strong><small data-i18n="spB1S">Logo e banner in evidenza</small></div>
+            </div>
+            <div class="sp-benefit">
+              <span class="sp-ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3.2" fill="#fff" stroke="none"/></svg></span>
+              <div><strong data-i18n="spB2T">Pubblico mirato</strong><small data-i18n="spB2S">Persone tra Italia e Tunisia</small></div>
+            </div>
+            <div class="sp-benefit">
+              <span class="sp-ico"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2.5l2.9 6.2 6.6.8-4.9 4.6 1.3 6.7L12 17.5l-5.9 3.3 1.3-6.7L2.5 9.5l6.6-.8z"/></svg></span>
+              <div><strong data-i18n="spB3T">Brand affidabile</strong><small data-i18n="spB3S">Associato a una community</small></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- SLIDE 3 -->
+        <article class="sp-slide sp-slide--rose">
+          <div class="sp-text">
+            <span class="sp-label sp-label--red" data-i18n="spLabel3">LA TUA ATTIVITÀ IN VIAGGIO</span>
+            <h2><span data-i18n="spTitle3a">Una community che viaggia,</span> <em data-i18n="spTitle3b">un pubblico che ti ascolta</em></h2>
+            <p data-i18n="spText3">Sponsorizza la tua attività su Hez Maak.</p>
+            <a class="sp-btn sp-btn--red" href="mailto:sponsor@hezmaak.com" data-i18n="spBtn3">Contattaci</a>
+          </div>
+          <div class="sp-route" aria-hidden="true">
+            <img class="sp-route-logo" src="logo-icon.svg" alt="">
+            <svg viewBox="0 0 560 150" class="sp-route-svg">
+              <path d="M70 100Q280 10 490 100" fill="none" stroke="#e11d48" stroke-width="4" stroke-dasharray="2 13" stroke-linecap="round"/>
+              <path d="M262 52L324 56 262 76 272 60Z" fill="#e11d48"/>
+              <circle cx="48" cy="104" r="40" fill="#fff"/><circle cx="512" cy="104" r="40" fill="#fff"/>
+              <text x="48" y="114" text-anchor="middle" font-size="26" font-weight="700" fill="#0f172a">EU</text>
+              <text x="512" y="114" text-anchor="middle" font-size="26" font-weight="700" fill="#0f172a">TN</text>
+            </svg>
+          </div>
+        </article>
+
+      </div>
+
+      <button type="button" class="sp-arrow sp-prev" aria-label="Precedente"><span>‹</span></button>
+      <button type="button" class="sp-arrow sp-next" aria-label="Successivo"><span>›</span></button>
+
+      <div class="sp-dots" id="spDots"></div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section class="cta">
+
+  <div class="container">
+
+
+    <h2 data-i18n="ctaTitle">
+
+      Hai un viaggio in programma?
+
+    </h2>
+
+
+    <p data-i18n="ctaText">
+
+      Trasforma lo spazio inutilizzato
+      nel tuo bagaglio in un'opportunità.
+
+    </p>
+
+
+    <button
+      class="primary large"
+      data-action="publish-trip"
+      data-i18n="ctaButton"
+    >
+
+      Pubblica il tuo viaggio
+
+    </button>
+
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+  <div class="container footer-grid">
+
+
+    <!-- BRAND -->
+
+    <div>
+
+
+      <div class="logo">
+
+        <img src="logo-icon.svg" alt="" class="logo-icon">
+
+        <span class="logo-text">
+
+          <span>Hez Maak</span>
+
+          <small>هزّ معاك</small>
+
+        </span>
+
+      </div>
+
+
+      <p>
+        🇪🇺 ↔ 🇹🇳
+      </p>
+
+
+      <div class="social-links">
+
+        <a
+          href="https://facebook.com/hezmaak"
+          target="_blank"
+          rel="noopener"
+          aria-label="Facebook"
+        >
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor">
+            <path d="M15 3H18V7H16C15.45 7 15 7.45 15 8V10H18L17.5 14H15V21H11V14H9V10H11V7.5C11 5 12.79 3 15.3 3Z"/>
+          </svg>
+        </a>
+
+        <a
+          href="https://instagram.com/hezmaak"
+          target="_blank"
+          rel="noopener"
+          aria-label="Instagram"
+        >
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="3" y="3" width="18" height="18" rx="5"/>
+            <circle cx="12" cy="12" r="4.2"/>
+            <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- LINKS -->
+
+    <div>
+
+
+      <h4 data-i18n="footerBrand">
+        Hez Maak
+      </h4>
+
+
+      <a
+        href="#come"
+        data-i18n="navHow"
+      >
+        Come funziona
+      </a>
+
+
+      <a
+        href="#viaggi"
+        data-i18n="navTrips"
+      >
+        Viaggi
+      </a>
+
+
+      <a
+        href="#richieste"
+        data-i18n="navRequests"
+      >
+        Richieste
+      </a>
+
+
+    </div>
+
+
+
+    <!-- SECURITY -->
+
+    <div>
+
+
+      <h4 data-i18n="securityTitle">
+        Sicurezza
+      </h4>
+
+
+      <a
+        href="#"
+        data-i18n="verifyIdentity"
+      >
+        Verifica identità
+      </a>
+
+
+      <a
+        href="#"
+        data-i18n="reviews"
+      >
+        Recensioni
+      </a>
+
+
+      <a
+        href="#"
+        data-i18n="support"
+      >
+        Assistenza
+      </a>
+
+
+    </div>
+
+
+
+    <!-- LEGALE -->
+
+    <div>
+
+
+      <h4 data-i18n="footerLegalTitle">
+        Legale
+      </h4>
+
+
+      <a href="privacy.html" data-i18n="privacyPolicyLink">
+        Privacy Policy
+      </a>
+
+
+      <a href="termini.html" data-i18n="termsOfServiceLink">
+        Termini di Servizio
+      </a>
+
+
+      <a href="#" onclick="showCookieBanner(); return false;" data-i18n="footerCookiePreferences">
+        Preferenze Cookie
+      </a>
+
+
+    </div>
+
+
+  </div>
+
+
+
+  <div class="copyright">
+
+    © 2026 Hez Maak
+
+  </div>
+
+
+</footer>
+
+
+<button type="button" id="toTop" class="to-top" aria-label="Torna su">↑</button>
+
+
+<!-- =====================================================
+     COOKIE BANNER
+===================================================== -->
+
+<div id="cookieBanner" class="cookie-banner" style="display:none">
+
+  <div class="cookie-banner-text">
+
+    <strong data-i18n="cookieBannerTitle">🍪 Cookie e preferenze</strong>
+
+    <p>
+      <span data-i18n="cookieBannerText">Usiamo cookie tecnici necessari al funzionamento del sito (lingua, tema, sessione di accesso). Non usiamo cookie di profilazione o pubblicitari. Per saperne di più leggi la</span>
+      <a href="privacy.html" data-i18n="cookieBannerLink">Privacy Policy</a>.
+    </p>
+
+  </div>
+
+  <button
+    type="button"
+    class="primary"
+    onclick="acceptCookies()"
+    data-i18n="cookieBannerAccept"
+  >
+    Ho capito
+  </button>
+
+</div>
+
+
+
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
+
+<script
+  src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+
+<!-- CONFIG -->
+
+<script src="config.js"></script>
+
+
+<!-- APP -->
+
+<script src="app.js"></script>
+
+
+<!-- AREA PRO (trasportatori e aziende) -->
+
+<script src="pro-i18n.js"></script>
+<script src="pro.js"></script>
+
+
+</body>
+
+</html>
